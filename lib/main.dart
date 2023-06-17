@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:summation_add/style.dart';
 
 void main() {
   runApp(MyApp());
@@ -44,24 +45,31 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Text(
                 "sumation Result = $summationResult",
-                style: const TextStyle(
-                  fontSize: 30,
-                  color: Colors.red
-                ),
+                style: myTextStyle(),
+              ),
+              SizedBox(height: 30,),
+              TextField(
+                decoration: myInputDecoration('first number'),
+                // decoration: InputDecoration(
+                //   border: OutlineInputBorder(),
+                //   hintText: 'Enter First Number',
+                // ),
               ),
               SizedBox(height: 10,),
               TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter First Number',
-                ),
+                decoration: myInputDecoration('second number'),
+                // decoration: InputDecoration(
+                //   border: OutlineInputBorder(),
+                //   hintText: 'Enter Second Number',
+                // ),
               ),
-              SizedBox(height: 10,),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter Second Number',
-                ),
+              Container(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: myButtonStyle(),
+                    onPressed: (){
+
+                    }, child: Text('Add')),
               )
             ],
           ),
