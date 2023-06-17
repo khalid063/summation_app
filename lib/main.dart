@@ -27,12 +27,27 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  int summationResult = 0;
-  int firstNumber = 0;
-  int secondNumber = 0;
+  // int summationResult = 0;
+  // int firstNumber = 0;
+  // int secondNumber = 0;
+
+  Map<String, String> numberList = {
+    "num1":"",
+    "num2":"",
+    "num3":"",
+  };
+
+  ///--------------------------- Build Method Start ------------------------///
 
   @override
   Widget build(BuildContext context) {
+
+    myInputOnChange(inputKey, inputValue){
+      setState(() {
+        numberList.update(inputKey, (value) => inputValue);
+      });
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Sum App"),
@@ -44,25 +59,31 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               Text(
-                "sumation Result = $summationResult",
+                "sumation Result = 0",
                 style: myTextStyle(),
               ),
               SizedBox(height: 30,),
               TextField(
+                onChanged: (value){
+                  myInputOnChange("num1", value);
+                },
                 decoration: myInputDecoration('first number'),
-                // decoration: InputDecoration(
-                //   border: OutlineInputBorder(),
-                //   hintText: 'Enter First Number',
-                // ),
               ),
               SizedBox(height: 10,),
               TextField(
+                onChanged: (value){
+                  myInputOnChange("num2", value);
+                },
                 decoration: myInputDecoration('second number'),
-                // decoration: InputDecoration(
-                //   border: OutlineInputBorder(),
-                //   hintText: 'Enter Second Number',
-                // ),
               ),
+              SizedBox(height: 10,),
+              TextField(
+                onChanged: (value){
+                  myInputOnChange("num3", value);
+                },
+                decoration: myInputDecoration('Third number'),
+              ),
+              SizedBox(height: 10,),
               Container(
                 width: double.infinity,
                 child: ElevatedButton(
