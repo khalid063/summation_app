@@ -31,11 +31,13 @@ class _HomeScreenState extends State<HomeScreen> {
   // int firstNumber = 0;
   // int secondNumber = 0;
 
-  Map<String, String> numberList = {
-    "num1":"",
-    "num2":"",
-    "num3":"",
+  Map<String, double> numberList = {
+    "num1":0,
+    "num2":0,
+    "num3":0,
   };
+
+  double sumResult = 0;
 
   ///--------------------------- Build Method Start ------------------------///
 
@@ -44,7 +46,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
     myInputOnChange(inputKey, inputValue){
       setState(() {
-        numberList.update(inputKey, (value) => inputValue);
+        numberList.update(inputKey, (value) => double.parse(inputValue));
+      });
+    }
+
+    /// addition method
+    addAllNumber(){
+      setState(() {
+        sumResult = numberList['num1']!+numberList['num2']!+numberList['num3']!;
+        print(sumResult);
       });
     }
 
@@ -59,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               Text(
-                "sumation Result = 0",
+                "sumation Result = $sumResult",
                 style: myTextStyle(),
               ),
               SizedBox(height: 30,),
@@ -89,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ElevatedButton(
                   style: myButtonStyle(),
                     onPressed: (){
-
+                        addAllNumber();
                     }, child: Text('Add')),
               )
             ],
